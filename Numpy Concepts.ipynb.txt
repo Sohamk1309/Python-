@@ -1,0 +1,482 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Numpy Concept"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3 4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Simple Arrray in Python\n",
+    "\n",
+    "import numpy as np\n",
+    "\n",
+    "arr=np.array([1,2,3,4])\n",
+    "print(arr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Finding Size Of Array Using Np"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3 4]\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#Finding Size Of Array Using Np\n",
+    "#import numpy as np\n",
+    "\n",
+    "arr=np.array([1,2,3,4])\n",
+    "print(arr)\n",
+    "np.size(arr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Find Shape Of Array"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3 4]\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "(4,)"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#Finding Shape Of Array 1-Dimensional\n",
+    "\n",
+    "arr=np.array([1,2,3,4])\n",
+    "print(arr)\n",
+    "np.shape(arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2 3 4]\n",
+      " [5 6 7 8]]\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "(2, 4)"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#Finding Shape Of Array 2-Dimensional\n",
+    "\n",
+    "arr=np.array([[1,2,3,4],[5,6,7,8]])\n",
+    "print(arr)\n",
+    "np.shape(arr)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Finding DataType Of Array"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1 2 3 4]\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "dtype('int32')"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#Finding DataType Of Array\n",
+    "\n",
+    "arr=np.array([1,2,3,4])\n",
+    "print(arr)\n",
+    "arr.dtype"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Operations"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Normal Array Is    :  [1 2 3 4]\n",
+      "Increment Array Is :  [3 4 5 6]\n",
+      "Decrement Array Is :  [-1  0  1  2]\n",
+      "Multiplyed Array Is :  [2 4 6 8]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#simple Operation +,-,* For Each element in list\n",
+    "\n",
+    "arr=np.array([1,2,3,4])\n",
+    "print(\"Normal Array Is    : \",arr)\n",
+    "print(\"Increment Array Is : \",arr+2)\n",
+    "print(\"Decrement Array Is : \",arr-2)\n",
+    "print(\"Multiplyed Array Is : \",arr*2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Mathematical Operation"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Normal Array :  [1 2 3 4]\n",
+      "Sum Of Array : 10\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Mathematical Operation of Finding Sum\n",
+    "\n",
+    "arr=np.array([1,2,3,4])\n",
+    "print(\"Normal Array : \",arr)\n",
+    "s=np.sum(arr)\n",
+    "print(\"Sum Of Array :\",s)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Normal Array :  [1 2 3 4]\n",
+      "Mean Of Array : 2.5\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Mathematical Operation Of Finding Mean\n",
+    "\n",
+    "arr=np.array([1,2,3,4])\n",
+    "print(\"Normal Array : \",arr)\n",
+    "m=np.mean(arr)\n",
+    "print(\"Mean Of Array :\",m)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Normal Array :  [1 2 3 4]\n",
+      "Standard deviation Of Array : 1.118033988749895\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Mathematical Operation Of Finding Standard Deviation\n",
+    "\n",
+    "arr=np.array([1,2,3,4])\n",
+    "print(\"Normal Array : \",arr)\n",
+    "s=np.std(arr)\n",
+    "print(\"Standard deviation Of Array :\",s)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Indexing"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Normal Array :  [1 2 3 4]\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "4"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#print direct index which ever we want\n",
+    "\n",
+    "arr=np.array([1,2,3,4])\n",
+    "print(\"Normal Array : \",arr)\n",
+    "arr[3]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Slicing"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Normal Array :  [1 2 3 4]\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "array([2, 3])"
+      ]
+     },
+     "execution_count": 39,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#If we want to print from index 0 to 3 then we use slicing concept\n",
+    "\n",
+    "arr=np.array([1,2,3,4])\n",
+    "print(\"Normal Array : \",arr)\n",
+    "arr[1:3]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Matrix Operation"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "First Array:\n",
+      " [[1 2 3]\n",
+      " [4 5 6]]\n",
+      "Second Array:\n",
+      " [[5 6]\n",
+      " [3 4]\n",
+      " [8 5]]\n",
+      "Multiplication Of Array\n",
+      " [[35 29]\n",
+      " [83 74]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#If we want to add two matrix\n",
+    "\n",
+    "arr1=np.array([[1,2,3],[4,5,6]])\n",
+    "arr2=np.array([[5,6,],[3,4],[8,5]])\n",
+    "print(\"First Array:\\n\",arr1)\n",
+    "print(\"Second Array:\\n\",arr2)\n",
+    "add=np.dot(arr1,arr2)\n",
+    "print(\"Multiplication Of Array\\n\",add)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Random Module"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Random Array:\n",
+      " [0.89201906 0.78897426 0.78865956]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#random input \n",
+    "\n",
+    "arr=np.array(np.random.rand(3))\n",
+    "print(\"Random Array:\\n\",arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Random Number In Integer Format:\n",
+      " [2 1 2 2 2]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Random input in INTEGER Type\n",
+    "\n",
+    "arr=np.array(np.random.randint(1,3,5))\n",
+    "print(\"Random Number In Integer Format:\\n\",arr)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
