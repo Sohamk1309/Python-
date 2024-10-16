@@ -1,0 +1,169 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import matplotlib.pyplot as plt\n",
+    "import numpy as np\n",
+    "\n",
+    "xpoints = np.array([0, 6])\n",
+    "ypoints = np.array([0, 250])\n",
+    "\n",
+    "plt.plot(xpoints, ypoints,'o')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{\n",
+      "    \"coord\": {\n",
+      "        \"lon\": 72.8479,\n",
+      "        \"lat\": 19.0144\n",
+      "    },\n",
+      "    \"weather\": [\n",
+      "        {\n",
+      "            \"id\": 721,\n",
+      "            \"main\": \"Haze\",\n",
+      "            \"description\": \"haze\",\n",
+      "            \"icon\": \"50d\"\n",
+      "        }\n",
+      "    ],\n",
+      "    \"base\": \"stations\",\n",
+      "    \"main\": {\n",
+      "        \"temp\": 301.14,\n",
+      "        \"feels_like\": 304.92,\n",
+      "        \"temp_min\": 301.09,\n",
+      "        \"temp_max\": 301.14,\n",
+      "        \"pressure\": 1005,\n",
+      "        \"humidity\": 78,\n",
+      "        \"sea_level\": 1005,\n",
+      "        \"grnd_level\": 1004\n",
+      "    },\n",
+      "    \"visibility\": 3000,\n",
+      "    \"wind\": {\n",
+      "        \"speed\": 4.63,\n",
+      "        \"deg\": 240\n",
+      "    },\n",
+      "    \"clouds\": {\n",
+      "        \"all\": 75\n",
+      "    },\n",
+      "    \"dt\": 1722577300,\n",
+      "    \"sys\": {\n",
+      "        \"type\": 1,\n",
+      "        \"id\": 9052,\n",
+      "        \"country\": \"IN\",\n",
+      "        \"sunrise\": 1722559550,\n",
+      "        \"sunset\": 1722606227\n",
+      "    },\n",
+      "    \"timezone\": 19800,\n",
+      "    \"id\": 1275339,\n",
+      "    \"name\": \"Mumbai\",\n",
+      "    \"cod\": 200\n",
+      "}\n"
+     ]
+    }
+   ],
+   "source": [
+    "import requests\n",
+    "import json\n",
+    "\n",
+    "API_key=\"d1b46e2e5608717fa6e350a2c9d6f041\"\n",
+    "city=\"mumbai\"\n",
+    "url=f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_key}'  \n",
+    "response=requests.get(url)\n",
+    "data=response.json()\n",
+    "print(json.dumps(data,indent=4))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0               NaN\n",
+       "1               NaN\n",
+       "2               NaN\n",
+       "3               NaN\n",
+       "4               NaN\n",
+       "           ...     \n",
+       "3003    6.205390253\n",
+       "3004    5.198931395\n",
+       "3005     6.33967756\n",
+       "3006    5.386196747\n",
+       "3007    6.795945687\n",
+       "Name: Value (Actual), Length: 3008, dtype: object"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df=pd.read_csv('MusicData.csv')\n",
+    "df\n",
+    "x=df.iloc[: , :-1]\n",
+    "y=df.iloc[ : , -1]\n",
+    "x\n",
+    "y"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

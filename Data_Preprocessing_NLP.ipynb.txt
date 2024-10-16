@@ -1,0 +1,576 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "84f0d22b-be09-4e3f-8e43-d87b085fccfe",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[nltk_data] Downloading package punkt to\n",
+      "[nltk_data]     C:\\Users\\HP\\AppData\\Roaming\\nltk_data...\n",
+      "[nltk_data]   Unzipping tokenizers\\punkt.zip.\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import nltk\n",
+    "nltk.download('punkt')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "640e8394-2a9a-4900-afcc-a68ecd92834b",
+   "metadata": {},
+   "source": [
+    "# 'Sentence Tokanization'\n",
+    "By using nltk with sentence_token Function we can create a tokenization of sentence \n",
+    "nltk will tokenize the sentence when punctuation is occured........"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "75db63c5-2c61-4a61-8202-410dec19523e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Sentences: ['Hello Everyone !', 'How are you?', \"I hope you're doing well.\", 'I am Asim kazi , Now i am study on tokenization example.']\n"
+     ]
+    }
+   ],
+   "source": [
+    "import nltk\n",
+    "\n",
+    "def sentence_tokenize(text):\n",
+    "    return nltk.sent_tokenize(text)\n",
+    "\n",
+    "text = \"Hello Everyone ! How are you? I hope you're doing well. I am Asim kazi , Now i am study on tokenization example.\"\n",
+    "sentences = sentence_tokenize(text)\n",
+    "\n",
+    "print(\"Sentences:\", sentences)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8e5db4f4-e8e5-4b22-8607-e3e93ec02d33",
+   "metadata": {},
+   "source": [
+    "# 'Word Tokenization' \n",
+    "By using nltk with word_token Function we can create a tokenization of words from whole sentence \n",
+    "nltk will tokenize the word for every word or punctuation........"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "2fbd84ae-2892-45bd-a6a5-18f2704fc0c3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Words: ['Hello', 'Everyone', '!', 'How', 'are', 'you', '?', 'I', 'hope', 'you', \"'re\", 'doing', 'well', '.', 'I', 'am', 'Asim', 'kazi', ',', 'Now', 'i', 'am', 'study', 'on', 'tokenization', 'example', '.']\n"
+     ]
+    }
+   ],
+   "source": [
+    "import nltk\n",
+    "\n",
+    "def word_tokenize(text):\n",
+    "    return nltk.word_tokenize(text)\n",
+    "\n",
+    "text = \"Hello Everyone ! How are you? I hope you're doing well. I am Asim kazi , Now i am study on tokenization example.\"\n",
+    "words = word_tokenize(text)\n",
+    "\n",
+    "print(\"Words:\", words)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b51f69ea-8c15-4a76-a387-618ae0fc03f8",
+   "metadata": {},
+   "source": [
+    "# Custom Tokenization"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "c6e4cd9e-4419-4374-b429-65d0a342ab68",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Custom Words: ['Hello', 'Everyone', 'How', 'are', 'you', 'I', 'hope', 'you', 're', 'doing', 'well', 'I', 'am', 'Asim', 'kazi', 'Now', 'i', 'am', 'study', 'on', 'tokenization', 'example']\n"
+     ]
+    }
+   ],
+   "source": [
+    "from nltk.tokenize import RegexpTokenizer\n",
+    "\n",
+    "# Custom word tokenization using regular expressions (splits on spaces)\n",
+    "tokenizer = RegexpTokenizer(r'\\w+')\n",
+    "words = tokenizer.tokenize(text)\n",
+    "\n",
+    "print(\"Custom Words:\", words)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5cc8ca8f-a696-4df1-b6e8-494529807007",
+   "metadata": {},
+   "source": [
+    "# Removinng Stopwords using NLTK"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "e5b2b05c-88e5-4d4b-a474-d91351bf3159",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[nltk_data] Downloading package stopwords to\n",
+      "[nltk_data]     C:\\Users\\HP\\AppData\\Roaming\\nltk_data...\n",
+      "[nltk_data]   Unzipping corpora\\stopwords.zip.\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import nltk\n",
+    "nltk.download('stopwords')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "19262c02-796a-45bf-9222-3267a371750b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Original Text: This is an example of removing stopwords from a given sentence.\n",
+      "Filtered Text (Without Stopwords): ['example', 'removing', 'stopwords', 'given', 'sentence', '.']\n"
+     ]
+    }
+   ],
+   "source": [
+    "from nltk.corpus import stopwords\n",
+    "from nltk.tokenize import word_tokenize\n",
+    "\n",
+    "def remove_stopwords(text):\n",
+    "    stop_words = set(stopwords.words('english'))  # Set of stopwords for the English language\n",
+    "    words = word_tokenize(text)  # Tokenize the input text into words\n",
+    "    filtered_sentence = [word for word in words if word.lower() not in stop_words]  # Remove stopwords\n",
+    "    return filtered_sentence\n",
+    "\n",
+    "# Example usage\n",
+    "text = \"This is an example of removing stopwords from a given sentence.\"\n",
+    "filtered_text = remove_stopwords(text)\n",
+    "\n",
+    "print(\"Original Text:\", text)\n",
+    "print(\"Filtered Text (Without Stopwords):\", filtered_text)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "a5774112-4f3a-4000-a074-40e7d1f0956f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Original Text: Es un placer conocerte, ¿Cómo te llamas?\n",
+      "Filtered Text (Without Stopwords): ['placer', 'conocerte', ',', '¿Cómo', 'llamas', '?']\n"
+     ]
+    }
+   ],
+   "source": [
+    "from nltk.corpus import stopwords\n",
+    "from nltk.tokenize import word_tokenize\n",
+    "\n",
+    "def remove_stopwords(text):\n",
+    "    stop_words = set(stopwords.words('spanish'))  # Set of stopwords for the spanish language\n",
+    "    words = word_tokenize(text)  # Tokenize the input text into words\n",
+    "    filtered_sentence = [word for word in words if word.lower() not in stop_words]  # Remove stopwords\n",
+    "    return filtered_sentence\n",
+    "\n",
+    "# Example usage\n",
+    "text = \"Es un placer conocerte, ¿Cómo te llamas?\"\n",
+    "filtered_text = remove_stopwords(text)\n",
+    "\n",
+    "print(\"Original Text:\", text)\n",
+    "print(\"Filtered Text (Without Stopwords):\", filtered_text)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3f96eb50-21dd-4d67-a2d7-ff682c3ac40c",
+   "metadata": {},
+   "source": [
+    "# Steaming using Porter Stemmer\n",
+    "It is used for 'converting the pural words to singular'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "6d01a687-65b4-41f5-a739-8ea389d22c40",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Original Text: I am loving the way you are running and playing outside.\n",
+      "Stemmed Text: ['i', 'am', 'love', 'the', 'way', 'you', 'are', 'run', 'and', 'play', 'outsid', '.']\n"
+     ]
+    }
+   ],
+   "source": [
+    "from nltk.stem import PorterStemmer\n",
+    "from nltk.tokenize import word_tokenize\n",
+    "\n",
+    "def stem_words(text):\n",
+    "    ps = PorterStemmer()  # Initialize the Porter Stemmer\n",
+    "    words = word_tokenize(text)  # Tokenize the input text into words\n",
+    "    stemmed_words = [ps.stem(word) for word in words]  # Apply stemming to each word\n",
+    "    return stemmed_words\n",
+    "\n",
+    "# Example usage\n",
+    "text = \"I am loving the way you are running and playing outside.\"\n",
+    "stemmed_text = stem_words(text)\n",
+    "\n",
+    "print(\"Original Text:\", text)\n",
+    "print(\"Stemmed Text:\", stemmed_text)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c3132e7f-9a20-489c-98d0-ecae6f033f52",
+   "metadata": {},
+   "source": [
+    "# Steaming using Lancaster Stemmer\n",
+    "If the word starts with a vowel, then at least two letters must remain after stemming (owing -> ow, but not ear -> e).\n",
+    "\n",
+    "If the word starts with a consonant, then at least three letters must remain after stemming, and at least one of these must be a vowel or “y” (saying -> say, but not string -> str)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "84cf1d12-54b3-4023-a3c2-24afbd4575e3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Lancaster Stemmed Text: ['i', 'am', 'lov', 'the', 'way', 'you', 'ar', 'run', 'and', 'play', 'outsid', '.']\n"
+     ]
+    }
+   ],
+   "source": [
+    "from nltk.stem import LancasterStemmer\n",
+    "\n",
+    "def stem_words_lancaster(text):\n",
+    "    ls = LancasterStemmer()  # Initialize the Lancaster Stemmer\n",
+    "    words = word_tokenize(text)\n",
+    "    stemmed_words = [ls.stem(word) for word in words]\n",
+    "    return stemmed_words\n",
+    "\n",
+    "# Example usage\n",
+    "stemmed_text_lancaster = stem_words_lancaster(text)\n",
+    "\n",
+    "print(\"Lancaster Stemmed Text:\", stemmed_text_lancaster)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "81b3e9df-e961-4d0f-9006-2ae03d03b4ca",
+   "metadata": {},
+   "source": [
+    "# Lamitization Using WordNet Lemmatizer\n",
+    "Lemmatization is the process of grouping together the different inflected forms of a word so they can be analyzed as a single item. Lemmatization is similar to stemming but it brings context to the words.\n",
+    "\n",
+    "Examples of lemmatization:\r\n",
+    "\r\n",
+    "\r\n",
+    "-> rocks : rock\r\n",
+    "\r\n",
+    "\r\n",
+    "-> corpora : corpus\r\n",
+    "\r\n",
+    "\r\n",
+    "-> better : good"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "0b4c68bc-e420-414c-a535-214798201663",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "[nltk_data] Downloading package wordnet to\n",
+      "[nltk_data]     C:\\Users\\HP\\AppData\\Roaming\\nltk_data...\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import nltk\n",
+    "nltk.download('wordnet')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "46856fdb-1f81-4000-a203-de3e6ef4bbb1",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Original Text: The striped bats are hanging on their feet for best\n",
+      "Lemmatized Text: ['The', 'striped', 'bat', 'are', 'hanging', 'on', 'their', 'foot', 'for', 'best']\n"
+     ]
+    }
+   ],
+   "source": [
+    "from nltk.stem import WordNetLemmatizer\n",
+    "from nltk.tokenize import word_tokenize\n",
+    "\n",
+    "def lemmatize_words(text):\n",
+    "    lemmatizer = WordNetLemmatizer()  # Initialize the WordNet Lemmatizer\n",
+    "    words = word_tokenize(text)  # Tokenize the input text into words\n",
+    "    lemmatized_words = [lemmatizer.lemmatize(word) for word in words]  # Lemmatize each word (default is noun)\n",
+    "    return lemmatized_words\n",
+    "\n",
+    "# Example usage\n",
+    "text = \"The striped bats are hanging on their feet for best\"\n",
+    "lemmatized_text = lemmatize_words(text)\n",
+    "\n",
+    "print(\"Original Text:\", text)\n",
+    "print(\"Lemmatized Text:\", lemmatized_text)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "08bd38d9-bb76-4eeb-a466-8c24bdb622c0",
+   "metadata": {},
+   "source": [
+    "# Removing Digits"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "204096c6-9f7a-49c3-8a21-5be5e60710f4",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Original Text: I have 2 cats and 3 dogs in 2024.\n",
+      "Text Without Digits: I have  cats and  dogs in .\n"
+     ]
+    }
+   ],
+   "source": [
+    "import re\n",
+    "\n",
+    "def remove_digits(text):\n",
+    "    result = re.sub(r'\\d+', '', text)  # Replace all digits with an empty string\n",
+    "    return result\n",
+    "\n",
+    "# Example usage\n",
+    "text_with_digits = \"I have 2 cats and 3 dogs in 2024.\"\n",
+    "cleaned_text = remove_digits(text_with_digits)\n",
+    "\n",
+    "print(\"Original Text:\", text_with_digits)\n",
+    "print(\"Text Without Digits:\", cleaned_text)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a23a75a6-716e-4897-a2c0-464a6b688e41",
+   "metadata": {},
+   "source": [
+    "# Convert to Lowercase"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "bb928b60-c394-4f3f-859d-622e14f7df7d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Original Text: Hello, World! This Is A Test String.\n",
+      "Lowercase Text: hello, world! this is a test string.\n"
+     ]
+    }
+   ],
+   "source": [
+    "def convert_to_lowercase(text):\n",
+    "    return text.lower()\n",
+    "\n",
+    "# Example usage\n",
+    "original_text = \"Hello, World! This Is A Test String.\"\n",
+    "lowercase_text = convert_to_lowercase(original_text)\n",
+    "\n",
+    "print(\"Original Text:\", original_text)\n",
+    "print(\"Lowercase Text:\", lowercase_text)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4b3536a2-12cc-4051-ba72-85f5269dfdab",
+   "metadata": {},
+   "source": [
+    "# Language Detection"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "1722fc47-8c99-4af4-be53-f80d90906b3f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Defaulting to user installation because normal site-packages is not writeable\n",
+      "Requirement already satisfied: langdetect in c:\\users\\hp\\appdata\\roaming\\python\\python312\\site-packages (1.0.9)\n",
+      "Requirement already satisfied: six in c:\\programdata\\anaconda3\\lib\\site-packages (from langdetect) (1.16.0)\n"
+     ]
+    }
+   ],
+   "source": [
+    "! pip install langdetect"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "f8dd001c-7194-4066-9dc8-2fda003665b7",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ModuleNotFoundError",
+     "evalue": "No module named 'langdetect'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)",
+      "Cell \u001b[1;32mIn[27], line 1\u001b[0m\n\u001b[1;32m----> 1\u001b[0m \u001b[38;5;28;01mfrom\u001b[39;00m \u001b[38;5;21;01mlangdetect\u001b[39;00m \u001b[38;5;28;01mimport\u001b[39;00m detect, DetectorFactory\n\u001b[0;32m      3\u001b[0m \u001b[38;5;66;03m# Set a seed for reproducibility\u001b[39;00m\n\u001b[0;32m      4\u001b[0m DetectorFactory\u001b[38;5;241m.\u001b[39mseed \u001b[38;5;241m=\u001b[39m \u001b[38;5;241m0\u001b[39m\n",
+      "\u001b[1;31mModuleNotFoundError\u001b[0m: No module named 'langdetect'"
+     ]
+    }
+   ],
+   "source": [
+    "from langdetect import detect, DetectorFactory\n",
+    "\n",
+    "# Set a seed for reproducibility\n",
+    "DetectorFactory.seed = 0\n",
+    "\n",
+    "def detect_language(text):\n",
+    "    return detect(text)\n",
+    "\n",
+    "# Example usage\n",
+    "text_english = \"Hello, how are you?\"\n",
+    "text_spanish = \"Hola, ¿cómo estás?\"\n",
+    "text_french = \"Bonjour, comment ça va?\"\n",
+    "\n",
+    "print(f\"Text: '{text_english}' - Detected Language: {detect_language(text_english)}\")\n",
+    "print(f\"Text: '{text_spanish}' - Detected Language: {detect_language(text_spanish)}\")\n",
+    "print(f\"Text: '{text_french}' - Detected Language: {detect_language(text_french)}\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d8af7461-16fc-45fc-8ed7-65dbff8b41d4",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
